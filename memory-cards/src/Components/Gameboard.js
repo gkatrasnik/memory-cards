@@ -4,9 +4,14 @@ import Gamecard from "./Gamecard";
 
 function Gameboard(props) {
   let cards = [];
-  for (let i = 0; i < 20; i++) {
+  for (let index = 0; index < 20; index++) {
     cards.push(
-      <Gamecard key={i} i={i} score={props.score} setScore={props.setScore} />
+      <Gamecard
+        key={index}
+        index={index}
+        score={props.score}
+        setScore={props.setScore}
+      />
     );
   }
 

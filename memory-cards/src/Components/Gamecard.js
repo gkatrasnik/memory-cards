@@ -1,16 +1,20 @@
 import { React, useEffect } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Image } from "react-bootstrap";
+import cards from "./Cards";
 
 function Gamecard(props) {
-  const currentScore = props.score;
-
   const handleClick = () => {
-    props.setScore(currentScore + 1);
+    props.setScore(props.score + 1);
   };
+
+  const imgurl = props.index + 1;
   return (
     <Card>
       {props.i}
-      <Button onClick={handleClick}>CLICK</Button>
+      <Image
+        src={process.env.PUBLIC_URL + `/images/${imgurl}.png`}
+        style={{ width: 200, height: 200 }}
+      />
     </Card>
   );
 }
