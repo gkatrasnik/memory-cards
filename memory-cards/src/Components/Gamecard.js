@@ -1,6 +1,7 @@
-import { React, useEffect } from "react";
-import { Card, Button, Image } from "react-bootstrap";
+import { React } from "react";
 import cards from "./Cards";
+import { Card, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Gamecard(props) {
   const handleClick = () => {
@@ -9,12 +10,13 @@ function Gamecard(props) {
 
   const imgurl = props.index + 1;
   return (
-    <Card>
-      {props.i}
-      <Image
+    <Card style={{ width: 120, height: 120 }} onClick={handleClick}>
+      <Card.Img
+        variant="top"
         src={process.env.PUBLIC_URL + `/images/${imgurl}.png`}
-        style={{ width: 200, height: 200 }}
+        style={{ width: 100, height: 100 }}
       />
+      <Card.Body></Card.Body>
     </Card>
   );
 }

@@ -1,11 +1,11 @@
 import { React } from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Gamecard from "./Gamecard";
 
 function Gameboard(props) {
-  let cards = [];
+  let renderedCards = [];
   for (let index = 0; index < 20; index++) {
-    cards.push(
+    renderedCards.push(
       <Gamecard
         key={index}
         index={index}
@@ -15,13 +15,7 @@ function Gameboard(props) {
     );
   }
 
-  return (
-    <Container>
-      <Row>
-        <Col> {cards}</Col>
-      </Row>
-    </Container>
-  );
+  return <Container className="d-flex flex-wrap">{renderedCards}</Container>;
 }
 
 export default Gameboard;

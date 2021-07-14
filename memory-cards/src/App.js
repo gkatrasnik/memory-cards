@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Navbar, Card } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
 import Scoreboard from "./Components/Scoreboard";
 import Gameboard from "./Components/Gameboard";
 import "./App.css";
@@ -10,14 +10,14 @@ function App() {
   return (
     <Container>
       <Navbar>
-        Navbar
-        <Scoreboard score={score} />
+        <Container>
+          <Navbar.Brand>
+            <h1>Memory Game</h1>
+          </Navbar.Brand>
+          <Scoreboard score={score} />
+        </Container>
       </Navbar>
-      <Row>
-        <Col>
-          <Gameboard score={score} setScore={setScore} />
-        </Col>
-      </Row>
+      <Gameboard score={score} setScore={setScore} />
     </Container>
   );
 }
