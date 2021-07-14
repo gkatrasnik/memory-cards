@@ -3,19 +3,22 @@ import { Container } from "react-bootstrap";
 import Gamecard from "./Gamecard";
 
 function Gameboard(props) {
-  let renderedCards = [];
-  for (let index = 0; index < 20; index++) {
-    renderedCards.push(
+  //map cards.js array into gameBoard obejct
+  const gameBoard = props.renderedCards.map((card, index) => {
+    return (
       <Gamecard
         key={index}
         index={index}
         score={props.score}
         setScore={props.setScore}
+        card={card}
+        clickedCards={props.clickedCards}
+        setClickedCards={props.setClickedCards}
       />
     );
-  }
+  });
 
-  return <Container className="d-flex flex-wrap">{renderedCards}</Container>;
+  return <Container className="d-flex flex-wrap">{gameBoard}</Container>;
 }
 
 export default Gameboard;
