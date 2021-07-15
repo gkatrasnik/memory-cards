@@ -3,13 +3,14 @@ import { Container, Navbar } from "react-bootstrap";
 import Scoreboard from "./Components/Scoreboard";
 import Gameboard from "./Components/Gameboard";
 import cards from "./Components/Cards";
+import Loose from "./Components/Loose";
+import Win from "./Components/Win";
+
 import "./App.css";
 
 function App() {
   const [score, setScore] = useState(0);
   const [cardsArray, setCardsArray] = useState(cards); //cards from Cards.js array
-
-  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     randomizeCards();
@@ -46,10 +47,12 @@ function App() {
     const clickedCard = cardsArray.find((icon) => icon.id === id);
 
     //check if card was already clicked
-    if (clickedCard.clicked === false) {
+    if (!clickedCard.clicked) {
       clickedCard.clicked = true;
+      setScore(score + 1);
     } else {
       console.log("LOOOSEEEE!!!"); // --------> render game over component
+      setScore(0);
       resetGame();
     }
 

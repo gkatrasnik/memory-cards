@@ -8,7 +8,6 @@ function Gamecard(props) {
       style={{ width: 120, height: 120 }}
       onClick={() => {
         props.handlCardClick(props.card.id);
-        props.setScore(props.score + 1);
       }}
     >
       <Card.Img
