@@ -52,6 +52,7 @@ function App() {
       newCardsArray[i].clicked = false;
     }
     setCardsArray(newCardsArray);
+    setScore(0);
   };
 
   return (
