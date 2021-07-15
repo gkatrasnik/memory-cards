@@ -12,8 +12,7 @@ function Gameboard(props) {
         score={props.score}
         setScore={props.setScore}
         card={card}
-        clickedCards={props.clickedCards}
-        setClickedCards={props.setClickedCards}
+        handlCardClick={props.handlCardClick}
       />
     );
   });

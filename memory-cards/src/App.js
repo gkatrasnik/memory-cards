@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import Scoreboard from "./Components/Scoreboard";
 import Gameboard from "./Components/Gameboard";
@@ -8,16 +8,51 @@ import "./App.css";
 function App() {
   const [score, setScore] = useState(0);
   const [cardsArray, setCardsArray] = useState(cards); //cards from Cards.js array
-  const [clickedCards, setClickedCards] = useState([]);
   const [renderedCards, setRenderedCards] = useState(cards);
+  const [gameOver, setGameOver] = useState(false);
+
+  useEffect(() => {});
 
   const randomizeCards = () => {
     //randomize original array before render. Fisher-Yates or Durstenfeld algorithm
     setRenderedCards();
   };
 
-  //check if card was already clicked
-  const checkClickedCard = () => {};
+  const handlCardClick = (index) => {
+    let newCardsArray = cardsArray;
+
+    //check if card was already clicked
+    if (newCardsArray[index].clicked === false) {
+      newCardsArray[index].clicked = true;
+    } else {
+      console.log("LOOOSEEEE!!!"); // --------> render game over component
+      resetGame();
+    }
+
+    checkWin();
+    setCardsArray(newCardsArray);
+  };
+
+  //check if all cards were clicked
+  const checkWin = () => {
+    if (cardsArray.every(checkClicked)) {
+      console.log("WIIIINNNNNNN!"); // -----------> render win component
+      resetGame();
+    }
+
+    function checkClicked(card) {
+      return card.clicked === true;
+    }
+  };
+
+  //reset game, set all cards.clicked to false
+  const resetGame = () => {
+    let newCardsArray = cardsArray;
+    for (let i in newCardsArray) {
+      newCardsArray[i].clicked = false;
+    }
+    setCardsArray(newCardsArray);
+  };
 
   return (
     <Container>
@@ -32,9 +67,8 @@ function App() {
       <Gameboard
         score={score}
         setScore={setScore}
-        setClickedCards={setClickedCards}
-        clickedCards={clickedCards}
         renderedCards={renderedCards}
+        handlCardClick={handlCardClick}
       />
     </Container>
   );
