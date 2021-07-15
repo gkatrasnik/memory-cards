@@ -4,7 +4,7 @@ import Gamecard from "./Gamecard";
 
 function Gameboard(props) {
   //map cards.js array into gameBoard obejct
-  const gameBoard = props.renderedCards.map((card, index) => {
+  const gameBoard = props.cardsArray.map((card, index) => {
     return (
       <Gamecard
         key={index}

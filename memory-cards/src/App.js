@@ -8,29 +8,52 @@ import "./App.css";
 function App() {
   const [score, setScore] = useState(0);
   const [cardsArray, setCardsArray] = useState(cards); //cards from Cards.js array
-  const [renderedCards, setRenderedCards] = useState(cards);
+
   const [gameOver, setGameOver] = useState(false);
 
-  useEffect(() => {});
+  useEffect(() => {
+    randomizeCards();
+  });
 
+  //Shuffle funtion - Fisher-Yates aglorithm
+  function shuffle(array) {
+    var currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
+
+  //Shuffle cardsArray
   const randomizeCards = () => {
-    //randomize original array before render. Fisher-Yates or Durstenfeld algorithm
-    setRenderedCards();
+    setCardsArray(shuffle(cardsArray));
   };
 
-  const handlCardClick = (index) => {
-    let newCardsArray = cardsArray;
+  const handlCardClick = (id) => {
+    //find clicked card by ID
+    const clickedCard = cardsArray.find((icon) => icon.id === id);
 
     //check if card was already clicked
-    if (newCardsArray[index].clicked === false) {
-      newCardsArray[index].clicked = true;
+    if (clickedCard.clicked === false) {
+      clickedCard.clicked = true;
     } else {
       console.log("LOOOSEEEE!!!"); // --------> render game over component
       resetGame();
     }
 
     checkWin();
-    setCardsArray(newCardsArray);
   };
 
   //check if all cards were clicked
@@ -51,8 +74,8 @@ function App() {
     for (let i in newCardsArray) {
       newCardsArray[i].clicked = false;
     }
-    setCardsArray(newCardsArray);
     setScore(0);
+    setCardsArray(newCardsArray);
   };
 
   return (
@@ -68,7 +91,7 @@ function App() {
       <Gameboard
         score={score}
         setScore={setScore}
-        renderedCards={renderedCards}
+        cardsArray={cardsArray}
         handlCardClick={handlCardClick}
       />
     </Container>
