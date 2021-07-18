@@ -2,7 +2,7 @@
   "name": "memory-cards",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://gkatrasnik.github.io/memory-cards-",
+  "homepage": "http://gkatrasnik.github.io/memory-cards",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
