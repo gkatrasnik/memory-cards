@@ -17,7 +17,11 @@ function Gameboard(props) {
     );
   });
 
-  return <Container className="d-flex flex-wrap">{gameBoard}</Container>;
+  return (
+    <Container className="d-flex flex-wrap" style={{ maxWidth: 600 }}>
+      {gameBoard}
+    </Container>
+  );
 }
 
 export default Gameboard;

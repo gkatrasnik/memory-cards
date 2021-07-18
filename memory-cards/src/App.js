@@ -85,9 +85,11 @@ function App() {
       <Navbar>
         <Container>
           <Navbar.Brand>
-            <h1>Memory Game</h1>
+            <h2>Memory Game</h2>
           </Navbar.Brand>
-          <Scoreboard score={score} />
+          <Navbar.Text>
+            <Scoreboard score={score} />
+          </Navbar.Text>
         </Container>
       </Navbar>
       <Gameover

@@ -1,20 +1,22 @@
 import { React } from "react";
-import { Card } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Gamecard(props) {
+  const style = {
+    width: "20%",
+
+    border: "1px solid black",
+    padding: "5px",
+  };
   return (
-    <Card
-      style={{ width: 120, height: 120 }}
+    <Image
+      src={process.env.PUBLIC_URL + `/images/${props.card.id}.png`}
+      style={style}
       onClick={() => {
         props.handlCardClick(props.card.id);
       }}
-    >
-      <Card.Img
-        src={process.env.PUBLIC_URL + `/images/${props.card.id}.png`}
-        style={{ width: 100, height: 100 }}
-      />
-    </Card>
+    />
   );
 }
 
