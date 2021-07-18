@@ -4,8 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function Gamecard(props) {
   const style = {
-    width: "20%",
-
+    width: "18%",
+    borderRadius: "10px",
+    margin: "3px",
     border: "1px solid black",
     padding: "5px",
   };
