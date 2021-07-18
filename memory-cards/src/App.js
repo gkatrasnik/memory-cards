@@ -3,14 +3,14 @@ import { Container, Navbar } from "react-bootstrap";
 import Scoreboard from "./Components/Scoreboard";
 import Gameboard from "./Components/Gameboard";
 import cards from "./Components/Cards";
-import Loose from "./Components/Loose";
-import Win from "./Components/Win";
-
+import Gameover from "./Components/Gameover.js";
 import "./App.css";
 
 function App() {
   const [score, setScore] = useState(0);
   const [cardsArray, setCardsArray] = useState(cards); //cards from Cards.js array
+  const [gameWin, setGameWin] = useState(false);
+  const [gameLoose, setGameLoose] = useState(false);
 
   useEffect(() => {
     randomizeCards();
@@ -51,9 +51,7 @@ function App() {
       clickedCard.clicked = true;
       setScore(score + 1);
     } else {
-      console.log("LOOOSEEEE!!!"); // --------> render game over component
-      setScore(0);
-      resetGame();
+      setGameLoose(true);
     }
 
     checkWin();
@@ -62,8 +60,7 @@ function App() {
   //check if all cards were clicked
   const checkWin = () => {
     if (cardsArray.every(checkClicked)) {
-      console.log("WIIIINNNNNNN!"); // -----------> render win component
-      resetGame();
+      setGameWin(true); //GAME WIN
     }
 
     function checkClicked(card) {
@@ -78,6 +75,8 @@ function App() {
       newCardsArray[i].clicked = false;
     }
     setScore(0);
+    setGameLoose(false);
+    setGameWin(false);
     setCardsArray(newCardsArray);
   };
 
@@ -91,6 +90,13 @@ function App() {
           <Scoreboard score={score} />
         </Container>
       </Navbar>
+      <Gameover
+        gameWin={gameWin}
+        setGameWin={setGameWin}
+        gameLoose={gameLoose}
+        setGameLoose={setGameLoose}
+        resetGame={resetGame}
+      />
       <Gameboard
         score={score}
         setScore={setScore}
