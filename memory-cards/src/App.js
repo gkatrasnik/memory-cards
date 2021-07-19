@@ -89,7 +89,7 @@ function App() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
-            <h2>Memory Game</h2>
+            <h1>Memory Game</h1>
           </Navbar.Brand>
           <Navbar.Text>
             <Scoreboard score={score} highScore={highScore} />
@@ -105,6 +105,9 @@ function App() {
         setGameLoose={setGameLoose}
         resetGame={resetGame}
       />
+      <p style={{ float: "right", paddingRight: 30, paddingTop: 50 }}>
+        Icons by flaticon.com
+      </p>
     </Container>
   );
 }
