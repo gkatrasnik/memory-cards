@@ -89,7 +89,7 @@ function App() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
-            <h1>Memory Game</h1>
+            <h3>Memory Game</h3>
           </Navbar.Brand>
           <Navbar.Text>
             <Scoreboard score={score} highScore={highScore} />
@@ -105,9 +105,16 @@ function App() {
         setGameLoose={setGameLoose}
         resetGame={resetGame}
       />
-      <p style={{ float: "right", paddingRight: 30, paddingTop: 50 }}>
-        Icons by flaticon.com
-      </p>
+      <div className="credits">
+        Stickers made by{" "}
+        <a href="https://www.flaticon.com/authors/stickers" title="Stickers">
+          Stickers
+        </a>{" "}
+        from{" "}
+        <a href="https://www.flaticon.com/" title="Flaticon">
+          www.flaticon.com
+        </a>
+      </div>
     </Container>
   );
 }
