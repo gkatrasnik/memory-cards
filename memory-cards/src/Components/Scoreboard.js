@@ -1,7 +1,12 @@
 import { React } from "react";
 
 function Scoreboard(props) {
-  return <h3>Score: {props.score}</h3>;
+  return (
+    <div>
+      <h6>Score: {props.score}</h6>
+      <h6>High score: {props.highScore}</h6>
+    </div>
+  );
 }
 
 export default Scoreboard;

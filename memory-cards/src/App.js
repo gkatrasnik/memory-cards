@@ -8,12 +8,16 @@ import "./App.css";
 
 function App() {
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [cardsArray, setCardsArray] = useState(cards); //cards from Cards.js array
   const [gameWin, setGameWin] = useState(false);
   const [gameLoose, setGameLoose] = useState(false);
 
   useEffect(() => {
-    // randomizeCards();
+    randomizeCards();
+    if (score >= highScore) {
+      setHighScore(score);
+    }
   });
 
   //Shuffle funtion - Fisher-Yates aglorithm
@@ -81,17 +85,18 @@ function App() {
   };
 
   return (
-    <Container>
-      <Navbar>
+    <Container fluid style={{ padding: 0 }}>
+      <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
             <h2>Memory Game</h2>
           </Navbar.Brand>
           <Navbar.Text>
-            <Scoreboard score={score} />
+            <Scoreboard score={score} highScore={highScore} />
           </Navbar.Text>
         </Container>
       </Navbar>
+      <Gameboard cardsArray={cardsArray} handlCardClick={handlCardClick} />
       <Gameover
         score={score}
         gameWin={gameWin}
@@ -99,12 +104,6 @@ function App() {
         gameLoose={gameLoose}
         setGameLoose={setGameLoose}
         resetGame={resetGame}
-      />
-      <Gameboard
-        score={score}
-        setScore={setScore}
-        cardsArray={cardsArray}
-        handlCardClick={handlCardClick}
       />
     </Container>
   );
