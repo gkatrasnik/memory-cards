@@ -9,6 +9,7 @@ function Gamecard(props) {
     margin: "3px",
     border: "1px solid black",
     padding: "5px",
+    cursor: "pointer",
   };
   return (
     <Image

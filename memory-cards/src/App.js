@@ -13,7 +13,7 @@ function App() {
   const [gameLoose, setGameLoose] = useState(false);
 
   useEffect(() => {
-    randomizeCards();
+    // randomizeCards();
   });
 
   //Shuffle funtion - Fisher-Yates aglorithm
@@ -93,6 +93,7 @@ function App() {
         </Container>
       </Navbar>
       <Gameover
+        score={score}
         gameWin={gameWin}
         setGameWin={setGameWin}
         gameLoose={gameLoose}
