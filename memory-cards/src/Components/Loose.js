@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 
 function Loose(props) {
   return (
-    <Modal show={props.gameLoose} onHide={() => props.resetGame()}>
+    <Modal centered show={props.gameLoose} onHide={() => props.resetGame()}>
       <Modal.Dialog>
         <Modal.Header>
           <Modal.Title>Game Over, you loose</Modal.Title>

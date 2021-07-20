@@ -86,7 +86,7 @@ function App() {
 
   return (
     <Container fluid style={{ padding: 0 }}>
-      <Navbar bg="dark" variant="dark">
+      <Navbar style={{ backgroundColor: "#292b2c" }} variant="dark">
         <Container>
           <Navbar.Brand>
             <h3>Memory Game</h3>

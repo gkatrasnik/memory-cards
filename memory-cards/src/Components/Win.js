@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 
 function Win(props) {
   return (
-    <Modal show={props.gameWin} onHide={() => props.resetGame()}>
+    <Modal centered show={props.gameWin} onHide={() => props.resetGame()}>
       <Modal.Dialog>
         <Modal.Header>
           <Modal.Title>Congratulations, you win!</Modal.Title>
